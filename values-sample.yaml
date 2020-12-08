@@ -1,0 +1,54 @@
+master:
+  tag: 2.190.1
+  useSecurity: false
+  disabledAgentProtocols: ""
+  installPlugins:
+    - prometheus:2.0.6
+    - kubernetes:1.27.2
+    - workflow-job:2.39
+    - workflow-aggregator:2.6
+    - credentials-binding:1.23
+    - git:4.4.2
+    #additional plugins
+    - ace-editor:1.1
+    - apache-httpcomponents-client-4-api:4.5.10-2.0
+    - authentication-tokens:1.4
+    - bouncycastle-api:2.18
+    - branch-api:2.6.0
+    - cloudbees-folder:6.14
+    - command-launcher:1.2
+    - credentials:2.3.11
+    - display-url-api:2.3.3
+    - docker-commons:1.16
+    - durable-task:1.35
+    - git-client:3.2.1
+    - git-server:1.9
+    - google-oauth-plugin:1.0.2
+    - handlebars:1.1.1
+    - jQuery and jQuery UI plugin
+    - jackson2-api:2.11.1
+    - jdk-tool:1.0
+    - jsch:0.1.55.2
+    - workflow-durable-task-step:2.35
+    - workflow-multibranch:2.22
+    - workflow-scm-step:2.11
+    - workflow-step-api:2.23
+    - workflow-support:3.5
+
+  csrf:
+    defaultCrumbIssuer:
+      enabled: false
+      proxyCompatability: false
+  prometheus:
+    enabled: true
+    serviceMonitorNamespace: "kubeaddons"
+    serviceMonitorAdditionalLabels:
+      app: jenkins
+      release: prometheus-kubeaddons
+  serviceType: "LoadBalancer"
+  jenkinsUriPrefix: "/jenkins"
+  ingress:
+    enabled: true
+    path: /jenkins
+    annotations:
+      kubernetes.io/ingress.class: traefik
